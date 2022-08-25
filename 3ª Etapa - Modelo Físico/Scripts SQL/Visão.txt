@@ -1,0 +1,14 @@
+1-
+CREATE VIEW AlunosAtivos AS
+SELECT A.Codigo, A.Nome, A.Sexo, A.Idade, A.Telefone, M.DataTrancamento
+FROM ALUNO A, MATRICULA M
+WHERE A.Codigo = M.CodigoAluno AND
+M.DataTrancamento IS NULL OR 
+M.DataTrancamento > (SELECT CURRENT_DATE)
+ORDER BY A.Nome
+
+2-
+CREATE VIEW ProfessoresDaAcademia AS
+SELECT CPF, Nome, Sexo
+FROM PROFESSOR 
+ORDER BY Sexo DESC
